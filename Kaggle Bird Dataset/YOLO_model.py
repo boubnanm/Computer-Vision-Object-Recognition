@@ -94,7 +94,8 @@ class Yolo_Bird_Detector():
                 #print ('\n\tPerforming object detection..')
                 prev_time = time.time()
                 try: list(dataloader)[0]
-                except:
+                except Exception as e:
+                    exception = e
                     for file in os.listdir(directory+'/'+folder):
                         i=plt.imread(directory+'/'+folder+'/'+file)
                         if len(i.shape)==2 or i.shape[2]!=3:
