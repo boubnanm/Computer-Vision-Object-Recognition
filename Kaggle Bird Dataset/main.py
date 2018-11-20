@@ -85,7 +85,7 @@ if args.crop:
     for folder in list(os.listdir("bird_dataset")):
         check_output('cp -fr bird_dataset/'+folder+' bird_dataset_output', shell=True) 
     args.data=args.output
-    from model import Yolo_Bird_Detector
+    from YOLO_model import Yolo_Bird_Detector
     Bird_Detector=Yolo_Bird_Detector(args)
     Bird_Detector.detect_crop_birds()
 
