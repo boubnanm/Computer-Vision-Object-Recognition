@@ -141,10 +141,12 @@ class Yolo_Bird_Detector():
 
                     # Bounding boxes and labels of detections
                     if detections is not None:
+                        count=0
                         unique_labels = detections[:, -1].cpu().unique()
                         n_cls_preds = len(unique_labels)
                         for x1, y1, x2, y2, conf, cls_conf, cls_pred in detections:
                             if cls_pred == classes.index("bird"):
+                                count=1
                                 #print ('\t+ Label: %s, Conf: %.5f' % (classes[int(cls_pred)], cls_conf.item()))
 
                                 # Rescale coordinates to original dimensions
@@ -167,8 +169,8 @@ class Yolo_Bird_Detector():
                                 else:
                                     plt.imsave(self.args.output+'/'+data_folder+'/'+folder+'/'+path[:-4]+"_cropped.jpg", img)
                                 plt.close()
-                            else:
-                                non_cropped+=1
+                        if count==0:
+                            non_cropped+=1
                     else:
                         non_cropped+=1
             print("\t{}% of {} images non cropped".format(np.round(100*non_cropped/num_imgs,2),data_folder))
