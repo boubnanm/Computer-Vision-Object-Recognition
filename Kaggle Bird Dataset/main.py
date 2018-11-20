@@ -44,7 +44,7 @@ parser.add_argument('--data', type=str, default='bird_dataset', metavar='D',
 parser.add_argument('--batch-size', type=int, default=32, metavar='B',
                     help='input batch size for training (default: 64)')
 parser.add_argument('--epochs', type=int, default=50, metavar='N',
-                    help='number of epochs to train (default: 10)')
+                    help='number of epochs to train (default: 50)')
 parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
                     help='learning rate (default: 0.01)')
 parser.add_argument('--momentum', type=float, default=0.9, metavar='M',
