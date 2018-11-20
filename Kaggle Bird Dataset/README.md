@@ -32,7 +32,7 @@ By default :
 python main.py --pad
 ```
 
-- The data is augmented by preprocessing the images using YoloV3 to detect birds and add cropped images centered on the birds. The outputed images are saved at `bird_dataset_output`. See YOLO_model.py for the `YoloV3` code.
+- The data is augmented by preprocessing the images using YoloV3 to detect birds and add cropped images centered on the birds. The outputed images are saved at `bird_dataset_output`. See `YOLO_model.py` for the YoloV3 code.
 To deactivate the detection process and train on the original training and test sets, run the following command :
 
 ```bash
