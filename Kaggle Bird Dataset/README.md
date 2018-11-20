@@ -45,6 +45,8 @@ An other option for training the model on the training and validation sets is av
 python main.py --merge
 ```
 
+See attached paper for default training parameters.
+
 #### Evaluating the model on the test set
 
 As the model trains, model checkpoints are saved to files such as `model_x.pth` to the current working directory.

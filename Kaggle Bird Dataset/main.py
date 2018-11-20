@@ -34,21 +34,21 @@ parser.add_argument('--padding', action='store_true', dest='padding', help='Enab
 parser.add_argument('--no-padding', action='store_false', dest='padding',  help='Disable image padding to conserve ratio')
 parser.add_argument('--crop', action='store_true', dest='crop', help='Enable image cropping')
 parser.add_argument('--no-crop', action='store_false', dest='crop',  help='Disable image cropping')
-parser.add_argument('--pad_size', type=int, default=224, help='size of padded image')
+parser.add_argument('--pad_size', type=int, default=331, help='size of padded image')
 parser.set_defaults(padding=False)
 parser.set_defaults(crop=False)
 
 # Training settings
 parser.add_argument('--data', type=str, default='bird_dataset', metavar='D',
                     help="folder where data is located. train_images/ and val_images/ need to be found in the folder")
-parser.add_argument('--batch-size', type=int, default=64, metavar='B',
+parser.add_argument('--batch-size', type=int, default=32, metavar='B',
                     help='input batch size for training (default: 64)')
 parser.add_argument('--epochs', type=int, default=50, metavar='N',
                     help='number of epochs to train (default: 10)')
-parser.add_argument('--lr', type=float, default=0.1, metavar='LR',
+parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
                     help='learning rate (default: 0.01)')
 parser.add_argument('--momentum', type=float, default=0.9, metavar='M',
-                    help='SGD momentum (default: 0.5)')
+                    help='SGD momentum (default: 0.9)')
 parser.add_argument('--seed', type=int, default=1, metavar='S',
                     help='random seed (default: 1)')
 parser.add_argument('--log-interval', type=int, default=10, metavar='N',
