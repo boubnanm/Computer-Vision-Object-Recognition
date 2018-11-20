@@ -13,9 +13,9 @@ import sys
 import time
 import datetime
 
-from PyTorch_YOLO.models import *
-from PyTorch_YOLO.utils.utils import *
-from PyTorch_YOLO.utils.datasets import *
+from models import *
+from utils.utils import *
+from utils.datasets import *
 
 import torch
 from torch.utils.data import DataLoader
