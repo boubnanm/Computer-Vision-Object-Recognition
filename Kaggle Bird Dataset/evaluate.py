@@ -8,7 +8,7 @@ import torch
 from model import Net
 
 parser = argparse.ArgumentParser(description='RecVis A3 evaluation script')
-parser.add_argument('--data', type=str, default='bird_dataset', metavar='D',
+parser.add_argument('--data', type=str, default='bird_dataset_output', metavar='D',
                     help="folder where data is located. test_images/ need to be found in the folder")
 parser.add_argument('--model', type=str, metavar='M',
                     help="the model file to be evaluated. Usually it is of the form model_X.pth")
@@ -19,7 +19,7 @@ args = parser.parse_args()
 use_cuda = torch.cuda.is_available()
 
 state_dict = torch.load(args.model)
-model = Net()
+model = torch.nn.DataParallel(Net())
 model.load_state_dict(state_dict)
 model.eval()
 if use_cuda:
@@ -28,7 +28,7 @@ if use_cuda:
 else:
     print('Using CPU')
 
-from data import data_transforms
+from data import data_val_transforms
 
 test_dir = args.data + '/test_images/mistery_category'
 
@@ -43,7 +43,7 @@ output_file = open(args.outfile, "w")
 output_file.write("Id,Category\n")
 for f in tqdm(os.listdir(test_dir)):
     if 'jpg' in f:
-        data = data_transforms(pil_loader(test_dir + '/' + f))
+        data = data_val_transforms(pil_loader(test_dir + '/' + f))
         data = data.view(1, data.size(0), data.size(1), data.size(2))
         if use_cuda:
             data = data.cuda()
