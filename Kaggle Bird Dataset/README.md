@@ -14,16 +14,38 @@ pip install -r requirements.txt
 
 #### Dataset
 We will be using a dataset containing 200 different classes of birds adapted from the [CUB-200-2011 dataset](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html).
-Download the training/validation/test images from [here](https://www.di.ens.fr/willow/teaching/recvis18/assignment3/bird_dataset.zip). The test image labels are not provided.
+The training/validation/test images used for this model can be downloaded from [here](https://www.di.ens.fr/willow/teaching/recvis18/assignment3/bird_dataset.zip). The test image labels are not provided.
 
-#### Training and validating your model
-Run the script `main.py` to train your model.
+#### Training and validating the model
+For the model, we used two pretrained models (ResNet152 and InceptionV3) to extract two features vectors. A classifier is added to classify the images using the stacked extracted features. See `model.py` and the attached paper for more details.
 
-Modify `main.py`, `model.py` and `data.py` for your assignment, with an aim to make the validation score better.
+To train the model with default parameters, run the following command :
 
-- By default the images are loaded and resized to 64x64 pixels and normalized to zero-mean and standard deviation of 1. See data.py for the `data_transforms`.
+```bash
+python main.py
+```
 
-#### Evaluating your model on the test set
+By default :
+- The images are loaded and resized to 331x331 pixels and normalized to zero-mean and standard deviation of 1. See data.py for the `data_train_transforms`. In order to preserve the ratio of the images, a padding option is available by running the following command (this option is **disabled** by default) :
+
+```bash
+python main.py --pad
+```
+
+- The data is augmented by preprocessing the images using YoloV3 to detect birds and add cropped images centered on the birds. The outputed images are saved at `bird_dataset_output`. See model.py for the `YoloV3` code.
+To deactivate the detection process and train on the original training and test sets, run the following command :
+
+```bash
+python main.py --no-crop
+```
+
+An other option for training the model on the training and validation sets is available by running the following command (this option is **disabled** by default): 
+
+```bash
+python main.py --merge
+```
+
+#### Evaluating the model on the test set
 
 As the model trains, model checkpoints are saved to files such as `model_x.pth` to the current working directory.
 You can take one of the checkpoints and run:
@@ -34,5 +56,11 @@ python evaluate.py --data [data_dir] --model [model_file]
 
 That generates a file `kaggle.csv` that you can upload to the private kaggle competition website.
 
+By default, the cropped images (bird_dataset_ouput) are used as the default directory.
+
+
 #### Acknowledgments
 Adapted from Rob Fergus and Soumith Chintala https://github.com/soumith/traffic-sign-detection-homework.
+
+#### Credits
+https://github.com/eriklindernoren/PyTorch-YOLOv3
