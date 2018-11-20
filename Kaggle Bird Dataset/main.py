@@ -36,7 +36,7 @@ parser.add_argument('--crop', action='store_true', dest='crop', help='Enable ima
 parser.add_argument('--no-crop', action='store_false', dest='crop',  help='Disable image cropping')
 parser.add_argument('--pad_size', type=int, default=331, help='size of padded image')
 parser.set_defaults(padding=False)
-parser.set_defaults(crop=False)
+parser.set_defaults(crop=True)
 
 # Training settings
 parser.add_argument('--data', type=str, default='bird_dataset', metavar='D',
