@@ -57,10 +57,6 @@ class Yolo_Bird_Detector():
     
     def detect_crop_birds(self):
         
-        from PyTorch_YOLO.models import *
-        from PyTorch_YOLO.utils.utils import *
-        from PyTorch_YOLO.utils.datasets import *
-        
         cuda = torch.cuda.is_available()
 
         # Set up model
