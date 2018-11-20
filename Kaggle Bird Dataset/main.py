@@ -73,11 +73,11 @@ if args.crop:
   
     # Download pretrained Yolo
     if not os.path.isdir('PyTorch_YOLO'):
-        check_output('git clone https://github.com/eriklindernoren/PyTorch-YOLOv3.git PyTorch_YOLO', shell=True
-
+        check_output('git clone https://github.com/eriklindernoren/PyTorch-YOLOv3.git PyTorch_YOLO', shell=True)
         if 'yolov3.weights' not in list(os.listdir("PyTorch_YOLO/weights")):
             check_output('wget https://pjreddie.com/media/files/yolov3.weights -O '+args.weights_path, shell=True) 
     if os.path.isdir("PyTorch_YOLO"): sys.path.insert(0, '/path/to/application/app/folder') 
+    
     # Copying the original images to cropped folder
     for folder in list(os.listdir("bird_dataset")):
         check_output('cp -fr bird_dataset/'+folder+' bird_dataset_output', shell=True) 
