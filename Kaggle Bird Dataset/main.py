@@ -76,7 +76,6 @@ if args.crop:
         check_output('git clone https://github.com/eriklindernoren/PyTorch-YOLOv3.git PyTorch_YOLO', shell=True)
         if 'yolov3.weights' not in list(os.listdir("PyTorch_YOLO/weights")):
             check_output('wget https://pjreddie.com/media/files/yolov3.weights -O '+args.weights_path, shell=True) 
-    if os.path.isdir("PyTorch_YOLO"): sys.path.insert(0, '/path/to/application/app/folder') 
     
     # Copying the original images to cropped folder
     for folder in list(os.listdir("bird_dataset")):
@@ -85,8 +84,7 @@ if args.crop:
     from YOLO_model import Yolo_Bird_Detector
     Bird_Detector=Yolo_Bird_Detector(args)
     Bird_Detector.detect_crop_birds()
-
-if os.path.isdir("PyTorch_YOLO"): sys.path.insert(0, '/PyTorch_YOLO')    
+    
     
 # Merging val and train dataset for Kaggle submission
 if args.merge:

@@ -13,6 +13,9 @@ import sys
 import time
 import datetime
 
+if os.path.isdir("PyTorch_YOLO"): 
+    sys.path.insert(0, 'PyTorch_YOLO')
+
 from models import *
 from utils.utils import *
 from utils.datasets import *
