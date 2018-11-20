@@ -13,10 +13,6 @@ import sys
 import time
 import datetime
 
-from PyTorch_YOLO.models import *
-from PyTorch_YOLO.utils.utils import *
-from PyTorch_YOLO.utils.datasets import *
-
 import torch
 from torch.utils.data import DataLoader
 from torchvision import datasets
@@ -99,6 +95,10 @@ class Yolo_Bird_Detector():
         return new_im
     
     def detect_crop_birds(self):
+        
+        from PyTorch_YOLO.models import *
+        from PyTorch_YOLO.utils.utils import *
+        from PyTorch_YOLO.utils.datasets import *
         
         cuda = torch.cuda.is_available()
 
